@@ -1,0 +1,130 @@
+{% extends 'master.html' %}
+{% load static %}
+
+ {% block body %}
+  
+  <!--================Home Banner Area =================-->
+
+  <!--================Checkout Area =================-->
+  <section class="checkout_area section_padding">
+    <div class="container">
+    
+      <div class="billing_details">
+        <div class="row">
+          <div class="col-lg-8">
+            <h3>Billing Details</h3>
+            <form class="row contact_form" action="/checkout" method="post" novalidate="novalidate">
+            {% csrf_token %}
+              <div class="col-md-6 form-group p_star">
+                <input type="text" class="form-control" id="first" name="Firstname" placeholder="First Name" required/>
+               
+              </div>
+              <div class="col-md-6 form-group p_star">
+                <input type="text" class="form-control" id="last" name="lastname" placeholder="Last name" required/>
+                
+              </div>
+             
+              <div class="col-md-6 form-group p_star">
+                <input type="text" class="form-control" id="number" name="phoneno" placeholder="Phone number" required/>
+              
+              </div>
+              <div class="col-md-6 form-group p_star">
+                <input type="text" class="form-control" id="email" name="emailid" placeholder="Email Address" required/>
+             
+              </div>
+            
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="add1" name="address" placeholder="Address line" required/>
+               
+              </div>
+              
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="city" name="city" placeholder="Town/City" required />
+              
+              </div>
+              <div class="col-md-12 form-group p_star">
+               <input type="text" name="district" class="form-control" placeholder="Disctrict" required/>
+                 
+              </div>
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="zip" name="zipcode" placeholder="Postcode/ZIP" required/>
+              </div>
+              <div class="col-md-12 form-group">
+                <input type="hidden" class="form-control" name="totalamount" value="{{data.total}}" id="amount"/>
+              </div>
+            
+                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+data-key="pk_test_V97TopC6Y8DNv5qAXx8hvrg500ZkBLaX7p"
+data-description="A Django Charge"
+data-amount=""
+data-locale="auto">
+</script>
+<script>
+$(document).ready(function(){
+
+    $("#amount").keyup(function(){
+        $(".stripe-button").attr("data-amount", $(this).val()*100);
+        
+    });
+   
+})
+</script>
+           
+          </div>
+          <div class="col-lg-4">
+            <div class="order_box">
+              <h2>Your Order</h2>
+              <ul class="list">
+                <li>
+                  <a href="#">Product
+                    <span>Total</span>
+                  </a>
+                </li>
+                {% for x in  data.products.all %}
+                <li>
+                  <a href="#">{{x.name}}
+                    <span class="middle"></span>
+                    <span class="last">${{x.price}}</span>
+                  </a>
+                </li>
+               {% endfor %}
+              </ul>
+              <ul class="list list_2">
+                
+                <li>
+                  <a href="#">Total
+                    <span>${{data.total}}</span>
+                  </a>
+                </li>
+              </ul>
+              <div class="payment_item">
+                <div class="radion_btn">
+                  <input type="radio" id="f-option5" name="selector" />
+                  <label for="f-option5">Card payments</label>
+                  <div class="check"></div>
+                </div>
+                <p>
+                  Please send a check to Store Name, Store Street, Store Town,
+                  Store State / County, Store Postcode.
+                </p>
+              </div>
+            
+            
+              <div class="creat_account">
+                <input type="checkbox" id="f-option4" name="selector" />
+                <label for="f-option4">I’ve read and accept the </label>
+                <a href="#">terms & conditions*</a>
+              </div>
+          
+              {% comment %} <button type="submit" class="btn_3" >Proceed to Payment</button> {% endcomment %}
+            </div>
+             </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Checkout Area =================-->
+
+  <!--::footer_part start::-->
+ {% endblock  %}

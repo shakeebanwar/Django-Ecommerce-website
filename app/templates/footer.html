@@ -1,0 +1,223 @@
+{% load static %}
+   <!--::footer_part start::-->
+    <footer class="footer_part">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-sm-6 col-lg-2">
+                    <div class="single_footer_part">
+                        <h4>Category</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Male</a></li>
+                            <li><a href="#">Female</a></li>
+                            <li><a href="#">Shoes</a></li>
+                            <li><a href="#">Fashion</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-2">
+                    <div class="single_footer_part">
+                        <h4>Company</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="">About</a></li>
+                            <li><a href="">News</a></li>
+                            <li><a href="">FAQ</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single_footer_part">
+                        <h4>Address</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">200, Green block, Karachi</a></li>
+                            <li><a href="#">+10 456 267 1678</a></li>
+                            <li><span>shoaibbilal101.com</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="single_footer_part">
+                        <h4>Newsletter</h4>
+                        <div id="mc_embed_signup">
+                            <form target="_blank"
+                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                method="get" class="subscribe_form relative mail_part">
+                                <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                                    class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = ' Email Address '">
+                                <button type="submit" name="submit" id="newsletter-submit"
+                                    class="email_icon newsletter-submit button-contactForm">subscribe</button>
+                                <div class="mt-10 info"></div>
+                            </form>
+                        </div>
+                        <div class="social_icon">
+                            <a href="https://www.facebook.com/"><i class="ti-facebook"></i></a>
+                            <a href="https://www.twitter.com/"><i class="ti-twitter-alt"></i></a>
+                            <a href="https://www.instagram.com/"><i class="ti-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="copyright_text">
+                        <P><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--::footer_part end::-->
+
+    <!-- jquery plugins here-->
+    <script src="{% static ''%}js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="{% static ''%}js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="{% static ''%}js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="{% static ''%}js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="{% static ''%}js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="{% static ''%}js/mixitup.min.js"></script>
+    <!-- particles js -->
+    <script src="{% static ''%}js/owl.carousel.min.js"></script>
+    <script src="{% static ''%}js/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="{% static ''%}js/slick.min.js"></script>
+    <script src="{% static ''%}js/jquery.counterup.min.js"></script>
+    <script src="{% static ''%}js/waypoints.min.js"></script>
+    <script src="{% static ''%}js/contact.js"></script>
+    <script src="{% static ''%}js/jquery.ajaxchimp.min.js"></script>
+    <script src="{% static ''%}js/jquery.form.js"></script>
+    <script src="{% static ''%}js/jquery.validate.min.js"></script>
+    <script src="{% static ''%}js/mail-script.js"></script>
+      <script>
+        $('.owl-carousel').owlCarousel({
+  loop: true,
+  margin: 10,
+  nav: true,
+  navText:false,
+  autoplay: true,
+  autoplayHoverPause: true,
+  responsive: {
+    0: {
+      items: 1
+    },
+    600: {
+      items: 3
+    },
+    1000: {
+      items: 5
+    }
+  }
+});
+var owl = $('.owl-carousel');
+owl.owlCarousel();
+$('#slider-right').click(function() {
+    
+    owl.trigger('next.owl.carousel');
+});
+// Go to the previous item
+$('#slider-left').click(function() {
+    // With optional speed parameter
+    // Parameters has to be in square bracket '[]'
+    owl.trigger('prev.owl.carousel', [300]);
+});
+ var i=0;
+    $('.gallery-item').hover( function() {
+        $(this).find('.img-title').fadeIn(300);
+    }, function() {
+        $(this).find('.img-title').fadeOut(100);
+    });
+   if(localStorage.getItem('cart')==null){
+       var cart={}
+   }
+   else{
+       cart=JSON.parse(localStorage.getItem('cart'));
+    
+   }
+   $('.cart').click(function(){
+       var cartid=this.id.toString();
+       if(cart[cartid] !=undefined){
+           cart[cartid]=cart[cartid]+1;
+           i=Object.keys(cart).length;
+         
+
+        
+       }
+       else{
+        cart[cartid]=1;
+        i=Object.keys(cart).length;
+        
+       }
+       localStorage.setItem('cart', JSON.stringify(cart));
+        console.log(cart);
+    document.getElementById('cart').innerHTML= i;
+   
+      
+   });
+   document.getElementById('cart').innerHTML= Object.keys(cart).length;
+
+   $('#trackerForm').submit(function(event) {
+        $('#items').empty();
+        var formData = {
+            'orderId': $('input[name=orderId]').val(),
+            'email': $('input[name=email]').val(),
+            'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+        };
+        $.ajax({
+                type: 'POST',
+                url: '/shop/tracker/',
+                data: formData,
+                encode: true
+            })
+            .done(function(data) {
+                $('#citems').empty();
+                console.log(data)
+                data = JSON.parse(data);
+                if (data['status'] == 'success') {
+                    updates = data['updates'];
+                    for (i = 0; i < updates.length; i++) {
+                        let text = updates[i]['text'];
+                        let time = updates[i]['time'];
+                        mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${text}
+                        <span class="badge badge-primary badge-pill">${time}</span>
+                    </li>`
+                        $('#items').append(mystr);
+                    }
+                    // Fill in the order details
+                    cart = JSON.parse(data['itemsJson']);
+                    console.log(cart);
+                    for (item in cart) {
+                        let name = cart[item][1];
+                        let qty = cart[item][0];
+                        mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${name}
+                        <span class="badge badge-primary badge-pill">${qty}</span>
+                    </li>`
+                        $('#citems').append(mystr);
+                    }
+                } 
+                else {
+                    mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        Sorry, We are not able to fetch this order id and email. Make sure to type correct order Id and email</li>`
+                    $('#items').append(mystr);
+                    $('#citems').append(mystr);
+                }
+            });
+        event.preventDefault();
+    });
+    </script>
+   
+
+       <!-- custom js -->
+    <script src="{% static ''%}js/custom.js"></script>
+  
+</body>
+
+</html>

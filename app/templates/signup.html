@@ -1,0 +1,26 @@
+{% extends 'master.html' %}
+{% load static %}
+
+ {% block body %}
+ <div class="container  align-self-center">
+     <div class="col-md-6">
+         <h1>User Registration</h1><br>
+         <form action="/signup" method="POST">
+             {% csrf_token %}
+              <label for="email">First Name</label>
+              <input type="text" name="fname" class="form-control" placeholder="Enter First name">
+              <label for="email">Last Name</label>
+              <input type="text" name="lname" class="form-control" placeholder="Enter Last name">
+              <label for="email">Email</label>
+              <input type="email" name="email" class="form-control" placeholder="Enter email">
+              <label for="pwd">Password:</label>
+              <input type="password" name="password" class="form-control" placeholder="Enter password" >
+            <br>
+           
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <br>
+          </form>
+     </div>
+    </div>
+ {% endblock  %}
+ 
